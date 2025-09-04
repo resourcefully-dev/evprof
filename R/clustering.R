@@ -176,7 +176,7 @@ cluster_sessions <- function(sessions, k, seed, mclust_tol = 1e-8, mclust_itmax 
 #' }
 #'
 #'
-save_clustering_iterations <- function(sessions, k, filename, it=12,
+save_clustering_iterations <- function(sessions, k, filename, it=6,
                                        seeds = round(runif(it, min=1, max=1000)),
                                        plot_scale = 2, points_size = 0.25,
                                        mclust_tol = 1e-8, mclust_itmax = 1e4,
