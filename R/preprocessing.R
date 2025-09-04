@@ -165,7 +165,7 @@ get_dbscan_params <- function(sessions, MinPts, eps0, noise_th = 2,
     if (eps <= 0) break
     sessions_cluster <- sessions[,c("ConnectionStartDateTime", "ConnectionHours")]
     dbscan_clusters <- dbscan::dbscan(sessions_cluster, eps, MinPts)
-    noise <- round(sum(dbscan_clusters$cluster == 0)/length(dbscan_clusters$cluster)*100, 2)
+    noise <- round(sum(dbscan_clusters$cluster == 0)/length(dbscan_clusters$cluster)*100)
     noise_table <- bind_rows(noise_table, c(MinPts = MinPts, eps = eps, noise = noise))
     noise_table <- arrange(noise_table, !!sym("noise"))
     if ((noise_table$noise[1] <= noise_th) & (noise_table$noise[nrow(noise_table)] >= noise_th)) break
