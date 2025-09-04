@@ -210,7 +210,7 @@ plot_density_2D <- function(sessions, bins=15, by = c("wday", "month", "year"), 
     stat_density2d(geom = "polygon", aes(fill = after_stat(.data$nlevel)), bins = bins) +
     scale_fill_viridis_c(name = 'Density of \nsessions\n') +
     # scale_x_datetime(date_labels = '%H:%M', date_breaks = '4 hour') +
-    xlab('\nSession start time') + ylab('Number of connection hours\n') +
+    xlab('\nConnection start time') + ylab('Number of connection hours\n') +
     theme_light()
 
   if (by == "wday") {
@@ -280,7 +280,7 @@ plot_density_3D <- function(sessions, start=getOption("evprof.start.hour"), eye 
     layout(
       scene = list(
         xaxis = list(title = "Connection start time", titlefont = list(size = 12), tickfont = list(size = 10)),
-        yaxis = list(title = "Connection hours", titlefont = list(size = 12), tickfont = list(size = 10)),
+        yaxis = list(title = "Number of connection hours", titlefont = list(size = 12), tickfont = list(size = 10)),
         zaxis = list(title = "Density of sessions", titlefont = list(size = 12), tickfont = list(size = 10)),
         camera = list(eye = eye)
       )) %>%
