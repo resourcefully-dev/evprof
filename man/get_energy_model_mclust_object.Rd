@@ -4,7 +4,7 @@
 \alias{get_energy_model_mclust_object}
 \title{Get Mclust object of univariate Gaussian Mixture Models}
 \usage{
-get_energy_model_mclust_object(energy_vct, log = TRUE)
+get_energy_model_mclust_object(energy_vct, log = getOption("evprof.log", TRUE))
 }
 \arguments{
 \item{energy_vct}{numeric vector, energy from sessions}

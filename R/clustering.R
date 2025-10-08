@@ -17,7 +17,8 @@
 #' @importFrom mclust Mclust emControl
 #'
 get_connection_model_mclust_object <- function(sessions, k, mclust_tol = 1e-8, mclust_itmax = 1e4,
-                                               log = FALSE, start = getOption("evprof.start.hour")) {
+                                               log = getOption("evprof.log", FALSE),
+                                               start = getOption("evprof.start.hour")) {
   if (!log) {
     sessions["ConnectionStartDateTime"] <- convert_time_dt_to_plot_num(
       sessions[["ConnectionStartDateTime"]],
@@ -80,7 +81,8 @@ get_connection_model_params <- function(mclust_obj) {
 #'
 #'
 choose_k_GMM <- function(sessions, k, mclust_tol = 1e-8, mclust_itmax = 1e4,
-                         log = FALSE, start = getOption("evprof.start.hour")) {
+                         log = getOption("evprof.log", FALSE),
+                         start = getOption("evprof.start.hour")) {
   mod <- get_connection_model_mclust_object(
     sessions, k = k, mclust_tol = mclust_tol,
     mclust_itmax = mclust_itmax, log = log, start = start
@@ -133,7 +135,8 @@ choose_k_GMM <- function(sessions, k, mclust_tol = 1e-8, mclust_itmax = 1e4,
 #'   ggplot2::aes(color = Cluster)
 #'
 cluster_sessions <- function(sessions, k, seed, mclust_tol = 1e-8, mclust_itmax = 1e4,
-                             log = FALSE, start = getOption("evprof.start.hour")) {
+                             log = getOption("evprof.log", FALSE),
+                             start = getOption("evprof.start.hour")) {
   set.seed(seed)
   mclust_obj <- get_connection_model_mclust_object(
     sessions, k, mclust_tol = mclust_tol, mclust_itmax = mclust_itmax,
@@ -180,7 +183,8 @@ save_clustering_iterations <- function(sessions, k, filename, it=6,
                                        seeds = round(runif(it, min=1, max=1000)),
                                        plot_scale = 2, points_size = 0.25,
                                        mclust_tol = 1e-8, mclust_itmax = 1e4,
-                                       log = FALSE, start = getOption("evprof.start.hour")) {
+                                       log = getOption("evprof.log", FALSE),
+                                       start = getOption("evprof.start.hour")) {
   ellipses_plots <- list()
   IC_values <- tibble(
     seed = seeds,
@@ -280,7 +284,8 @@ get_ellipse <- function(mu, sigma, alpha = 0.05, npoints = 200) {
 #'
 plot_bivarGMM <- function(sessions, models, profiles_names = seq(1, nrow(models)),
                           points_size = 0.25, lines_size = 1, legend_nrow = 2,
-                          log = FALSE, start = getOption("evprof.start.hour")) {
+                          log = getOption("evprof.log", FALSE),
+                          start = getOption("evprof.start.hour")) {
   ellipses <- purrr::map_dfr(
     set_names(seq(1, nrow(models)), nm = profiles_names),
     ~ get_ellipse(models$mu[[.x]], models$sigma[[.x]]),
@@ -308,4 +313,3 @@ plot_bivarGMM <- function(sessions, models, profiles_names = seq(1, nrow(models)
   }
   return( plot )
 }
-

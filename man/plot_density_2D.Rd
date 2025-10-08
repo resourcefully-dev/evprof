@@ -9,7 +9,7 @@ plot_density_2D(
   bins = 15,
   by = c("wday", "month", "year"),
   start = getOption("evprof.start.hour"),
-  log = FALSE
+  log = getOption("evprof.log", FALSE)
 )
 }
 \arguments{

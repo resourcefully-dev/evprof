@@ -11,7 +11,7 @@ get_dbscan_params(
   noise_th = 2,
   eps_offset_pct = 0.9,
   eps_inc_pct = 0.02,
-  log = FALSE,
+  log = getOption("evprof.log", FALSE),
   start = getOption("evprof.start.hour")
 )
 }

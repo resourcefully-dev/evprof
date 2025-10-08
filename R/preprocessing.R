@@ -39,7 +39,8 @@
 cut_sessions <- function(sessions,
                          connection_hours_min = NA, connection_hours_max = NA,
                          connection_start_min = NA, connection_start_max = NA,
-                         log = FALSE, start = getOption("evprof.start.hour")) {
+                         log = getOption("evprof.log", FALSE),
+                         start = getOption("evprof.start.hour")) {
 
   if (log) {
     sessions_log <- mutate_to_log(sessions, start)
@@ -104,7 +105,8 @@ cut_sessions <- function(sessions,
 #'   sample_frac(0.05) %>%
 #'   plot_kNNdist(start = 3, log = TRUE)
 #'
-plot_kNNdist <- function(sessions, MinPts = NULL, log = FALSE,
+plot_kNNdist <- function(sessions, MinPts = NULL,
+                         log = getOption("evprof.log", FALSE), 
                          start = getOption("evprof.start.hour")) {
   if (log) {
     sessions <- mutate_to_log(sessions, start)
@@ -147,7 +149,8 @@ plot_kNNdist <- function(sessions, MinPts = NULL, log = FALSE,
 #'
 get_dbscan_params <- function(sessions, MinPts, eps0, noise_th = 2,
                               eps_offset_pct = 0.9, eps_inc_pct = 0.02,
-                              log = FALSE, start = getOption("evprof.start.hour")) {
+                              log = getOption("evprof.log", FALSE), 
+                              start = getOption("evprof.start.hour")) {
   if (log) {
     sessions <- mutate_to_log(sessions, start)
   } else {
@@ -207,7 +210,8 @@ get_dbscan_params <- function(sessions, MinPts, eps0, noise_th = 2,
 #'   detect_outliers(start = 3, noise_th = 5, eps = 2.5)
 #'
 detect_outliers <- function(sessions, MinPts=NULL, eps=NULL, noise_th = 2,
-                            log = FALSE, start = getOption("evprof.start.hour")) {
+                            log = getOption("evprof.log", FALSE),
+                            start = getOption("evprof.start.hour")) {
 
   if (is.null(MinPts) | is.null(eps)) {
     if (is.null(MinPts)) MinPts <- 200
@@ -295,7 +299,10 @@ drop_outliers <- function(sessions) {
 #' plot_outliers(sessions_outliers, start = 3)
 #' plot_outliers(sessions_outliers, start = 3, log = TRUE)
 #'
-plot_outliers <- function(sessions, start=getOption("evprof.start.hour"), log = FALSE, ...) {
+plot_outliers <- function(
+  sessions, start=getOption("evprof.start.hour"), 
+  log = getOption("evprof.log", FALSE), ...
+) {
   outliers_pct <- round(sum(sessions[['Outlier']])/nrow(sessions)*100, 2)
   if (log) {
     sessions <- mutate_to_log(sessions, start)
@@ -440,7 +447,10 @@ divide_by_disconnection <- function(sessions, division_hour, start = getOption("
 #' plot_points(sessions_timecycles) +
 #'   facet_wrap(vars(Timecycle))
 #'
-divide_by_timecycle <- function(sessions, months_cycles = list(1:12), wdays_cycles = list(1:5, 6:7), start = getOption("evprof.start.hour")) {
+divide_by_timecycle <- function(
+  sessions, months_cycles = list(1:12), wdays_cycles = list(1:5, 6:7), 
+  start = getOption("evprof.start.hour")
+) {
 
   cycles_tbl <- tibble(
     months = rep(months_cycles, each = length(wdays_cycles)),

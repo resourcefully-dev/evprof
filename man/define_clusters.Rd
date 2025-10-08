@@ -8,7 +8,7 @@ define_clusters(
   models,
   interpretations = NULL,
   profile_names = NULL,
-  log = FALSE
+  log = getOption("evprof.log", FALSE)
 )
 }
 \arguments{

@@ -61,7 +61,10 @@
 #'   log = TRUE
 #' )
 #'
-define_clusters <- function (models, interpretations = NULL, profile_names = NULL, log = FALSE) {
+define_clusters <- function (
+  models, interpretations = NULL, profile_names = NULL, 
+  log = getOption("evprof.log", FALSE)
+) {
   centroids <- tibble(
     cluster = models$cluster,
     mean_start_time = map_dbl(models$mu, ~.x[1]),
@@ -152,4 +155,3 @@ set_profiles <- function (sessions_clustered = list(), clusters_definition = lis
     )
   ) %>% select("Profile", everything())
 }
-

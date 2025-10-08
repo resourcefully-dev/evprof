@@ -11,7 +11,7 @@ plot_bivarGMM(
   points_size = 0.25,
   lines_size = 1,
   legend_nrow = 2,
-  log = FALSE,
+  log = getOption("evprof.log", FALSE),
   start = getOption("evprof.start.hour")
 )
 }

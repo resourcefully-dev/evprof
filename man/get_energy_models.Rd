@@ -4,7 +4,11 @@
 \alias{get_energy_models}
 \title{Get a tibble of energy GMM for every user profile}
 \usage{
-get_energy_models(sessions_profiles, log = TRUE, by_power = FALSE)
+get_energy_models(
+  sessions_profiles,
+  log = getOption("evprof.log", TRUE),
+  by_power = FALSE
+)
 }
 \arguments{
 \item{sessions_profiles}{tibble, sessions data set in evprof

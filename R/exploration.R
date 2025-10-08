@@ -154,7 +154,10 @@ mutate_to_log <- function(sessions, start=getOption("evprof.start.hour"), base =
 #'   sample_frac(0.05) %>%
 #'   plot_points(log = TRUE)
 #'
-plot_points <- function(sessions, start=getOption("evprof.start.hour"), log = FALSE, ...) {
+plot_points <- function(
+  sessions, start=getOption("evprof.start.hour"),
+  log = getOption("evprof.log", FALSE), ...
+) {
   if (log) {
     sessions <- sessions %>% mutate_to_log(start)
   } else {
@@ -196,12 +199,20 @@ plot_points <- function(sessions, start=getOption("evprof.start.hour"), log = FA
 #'   sample_frac(0.05) %>%
 #'   plot_density_2D(by = "wday", start = 3, bins = 15, log = FALSE)
 #'
-plot_density_2D <- function(sessions, bins=15, by = c("wday", "month", "year"), start=getOption("evprof.start.hour"), log = FALSE) {
-  sessions[["wday"]] <- factor(wday(sessions[["ConnectionStartDateTime"]], week_start = 1))
-  sessions[["month"]] <- factor(month(sessions[["ConnectionStartDateTime"]]))
-  sessions[["year"]] <- factor(year(sessions[["ConnectionStartDateTime"]]))
+plot_density_2D <- function(
+  sessions, bins=15, by = c("wday", "month", "year"),
+  start=getOption("evprof.start.hour"),
+  log = getOption("evprof.log", FALSE)
+) {
+  sessions[["wday"]] <- 
+    factor(wday(sessions[["ConnectionStartDateTime"]], week_start = 1))
+  sessions[["month"]] <- 
+    factor(month(sessions[["ConnectionStartDateTime"]]))
+  sessions[["year"]] <- 
+    factor(year(sessions[["ConnectionStartDateTime"]]))
   if (!log) {
-    sessions[["ConnectionStartDateTime"]] <- convert_time_dt_to_plot_dt(sessions[["ConnectionStartDateTime"]], start)
+    sessions[["ConnectionStartDateTime"]] <- 
+      convert_time_dt_to_plot_dt(sessions[["ConnectionStartDateTime"]], start)
   } else {
     sessions <- mutate_to_log(sessions, start)
   }
@@ -265,7 +276,11 @@ plot_density_2D <- function(sessions, bins=15, by = c("wday", "month", "year"), 
 #'   sample_frac(0.05) %>%
 #'   plot_density_3D(start = 3)
 #'
-plot_density_3D <- function(sessions, start=getOption("evprof.start.hour"), eye = list(x = -1.5, y = -1.5, z = 1.5), log = FALSE) {
+plot_density_3D <- function(
+  sessions, start=getOption("evprof.start.hour"), 
+  eye = list(x = -1.5, y = -1.5, z = 1.5), 
+  log = getOption("evprof.log", FALSE)
+) {
   if (!log) {
     sessions["ConnectionStartDateTime"] <- convert_time_dt_to_plot_num(sessions[["ConnectionStartDateTime"]], start)
   } else {
@@ -303,7 +318,9 @@ plot_density_3D <- function(sessions, start=getOption("evprof.start.hour"), eye 
 #' summarise_sessions(california_ev_sessions, mean)
 #'
 #'
-summarise_sessions <- function(sessions, .funs, vars = evprof::sessions_summary_feature_names) {
+summarise_sessions <- function(
+  sessions, .funs, vars = evprof::sessions_summary_feature_names
+) {
   sessions %>%
     select(any_of(vars)) %>%
     summarise_all(.funs)
@@ -356,7 +373,10 @@ plot_histogram <- function(sessions, var, binwidth=1) {
 #' plot_histogram_grid(california_ev_sessions)
 #' plot_histogram_grid(california_ev_sessions, vars = c("Energy", "Power"))
 #'
-plot_histogram_grid <- function(sessions, vars=evprof::sessions_summary_feature_names, binwidths=rep(1, length(vars)), nrow = NULL, ncol = NULL) {
+plot_histogram_grid <- function(
+  sessions, vars=evprof::sessions_summary_feature_names, 
+  binwidths=rep(1, length(vars)), nrow = NULL, ncol = NULL
+) {
   hist_list <- purrr::map2(vars, binwidths, ~ plot_histogram(sessions, .x, .y))
   cowplot::plot_grid(plotlist = hist_list, nrow = nrow, ncol = ncol)
 }
@@ -461,5 +481,4 @@ get_daily_avg_n_sessions <- function(sessions, years, months, wdays) {
     mean %>%
     round
 }
-
 

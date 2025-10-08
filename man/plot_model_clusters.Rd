@@ -10,7 +10,7 @@ plot_model_clusters(
   subsets_clustering = list(),
   clusters_definition = list(),
   profiles_ratios,
-  log = TRUE
+  log = getOption("evprof.log", TRUE)
 )
 }
 \arguments{

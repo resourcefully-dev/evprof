@@ -100,7 +100,7 @@ get_connection_models <- function(subsets_clustering = list(), clusters_definiti
 #'
 #' @importFrom mclust densityMclust cdfMclust
 #'
-get_energy_model_mclust_object <- function(energy_vct, log = TRUE) {
+get_energy_model_mclust_object <- function(energy_vct, log = getOption("evprof.log", TRUE)) {
   if (log) {
     energy_vct <- log(energy_vct)
     energy_vct <- energy_vct[!is.infinite(energy_vct)]
@@ -183,7 +183,9 @@ get_energy_model_parameters <- function(mclust_obj) {
 #'
 #'
 #'
-get_energy_models <- function(sessions_profiles, log = TRUE, by_power = FALSE) {
+get_energy_models <- function(
+  sessions_profiles, log = getOption("evprof.log", TRUE), by_power = FALSE
+) {
   if (by_power) {
     n_different_power <- unique(sessions_profiles$Power)
     if (length(n_different_power) > 5) {
@@ -246,7 +248,7 @@ get_energy_models <- function(sessions_profiles, log = TRUE, by_power = FALSE) {
 #' plot_energy_models(energy_models)
 #'
 #'
-plot_energy_models <- function(energy_models, nrow=2) {
+plot_energy_models <- function(energy_models, nrow = 2) {
 
   plot_list <- list()
 
@@ -375,7 +377,7 @@ plot_energy_models <- function(energy_models, nrow=2) {
 #'
 #'
 plot_model_clusters <- function(subsets_clustering = list(), clusters_definition = list(),
-                                profiles_ratios, log = TRUE) {
+                                profiles_ratios, log = getOption("evprof.log", TRUE)) {
 
   cluster_profiles_names <- unlist(map(clusters_definition, ~ .x[["profile"]]))
 
@@ -443,8 +445,10 @@ plot_model_clusters <- function(subsets_clustering = list(), clusters_definition
 #' )
 #'
 #'
-get_ev_model <- function(names, months_lst = list(1:12, 1:12), wdays_lst = list(1:5, 6:7),
-                         connection_GMM, energy_GMM, connection_log, energy_log, data_tz) {
+get_ev_model <- function(
+  names, months_lst = list(1:12, 1:12), wdays_lst = list(1:5, 6:7),
+  connection_GMM, energy_GMM, connection_log, energy_log, data_tz
+) {
 
   # Remove `mclust` component from energy models tibble
   energy_GMM <- map(

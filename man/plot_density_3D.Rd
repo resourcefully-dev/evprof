@@ -8,7 +8,7 @@ plot_density_3D(
   sessions,
   start = getOption("evprof.start.hour"),
   eye = list(x = -1.5, y = -1.5, z = 1.5),
-  log = FALSE
+  log = getOption("evprof.log", FALSE)
 )
 }
 \arguments{

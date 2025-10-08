@@ -7,7 +7,7 @@
 plot_outliers(
   sessions,
   start = getOption("evprof.start.hour"),
-  log = FALSE,
+  log = getOption("evprof.log", FALSE),
   ...
 )
 }

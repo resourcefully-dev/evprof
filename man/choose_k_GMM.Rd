@@ -9,7 +9,7 @@ choose_k_GMM(
   k,
   mclust_tol = 1e-08,
   mclust_itmax = 10000,
-  log = FALSE,
+  log = getOption("evprof.log", FALSE),
   start = getOption("evprof.start.hour")
 )
 }

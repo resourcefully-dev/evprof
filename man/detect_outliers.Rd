@@ -9,7 +9,7 @@ detect_outliers(
   MinPts = NULL,
   eps = NULL,
   noise_th = 2,
-  log = FALSE,
+  log = getOption("evprof.log", FALSE),
   start = getOption("evprof.start.hour")
 )
 }
