@@ -228,7 +228,7 @@ get_energy_models <- function(
 #' @export
 #'
 #' @importFrom purrr map set_names
-#' @importFrom cowplot plot_grid
+#' @importFrom cowplot plot_grid get_legend
 #' @importFrom ggplot2 ggplot aes geom_histogram geom_line theme_light labs theme unit after_stat
 #' @importFrom dplyr tibble mutate %>%
 #' @importFrom mclust predict.densityMclust
@@ -251,6 +251,7 @@ get_energy_models <- function(
 plot_energy_models <- function(energy_models, nrow = 2) {
 
   plot_list <- list()
+  legend_plot <- NULL
 
   for (prof in unique(energy_models$profile)) {
 
@@ -279,7 +280,7 @@ plot_energy_models <- function(energy_models, nrow = 2) {
           y = predict.densityMclust(.x, .data$x)
         ),
       .id = "charging_rate"
-    )
+      )
 
     profile_plot2 <- profile_plot +
       geom_line(
@@ -298,12 +299,24 @@ plot_energy_models <- function(energy_models, nrow = 2) {
         theme(
           legend.position = "none"
         )
+    } else if (is.null(legend_plot)) {
+      legend_plot <- profile_plot2
     }
 
-    plot_list[[prof]] <- profile_plot2
+    plot_list[[prof]] <- profile_plot2 +
+      theme(
+        legend.position = "none"
+      )
   }
 
-  cowplot::plot_grid(plotlist = plot_list, nrow = nrow)
+  plot_grid_main <- cowplot::plot_grid(plotlist = plot_list, nrow = nrow)
+
+  if (!is.null(legend_plot)) {
+    legend <- cowplot::get_legend(legend_plot)
+    cowplot::plot_grid(plot_grid_main, legend, ncol = 1, rel_heights = c(1, 0.12))
+  } else {
+    plot_grid_main
+  }
 }
 
 
@@ -369,14 +382,14 @@ plot_energy_models <- function(energy_models, nrow = 2) {
 #'
 #' # Plot all bi-variable GMM (clusters) with the colors corresponding
 #' # to their assigned user profile
-#' plot_model_clusters(
+#' plot_connection_models(
 #'   subsets_clustering = list(sessions_clusters),
 #'   clusters_definition = list(clusters_definitions),
 #'   profiles_ratios = connection_models[c("profile", "ratio")]
 #' )
 #'
 #'
-plot_model_clusters <- function(subsets_clustering = list(), clusters_definition = list(),
+plot_connection_models <- function(subsets_clustering = list(), clusters_definition = list(),
                                 profiles_ratios, log = getOption("evprof.log", TRUE)) {
 
   cluster_profiles_names <- unlist(map(clusters_definition, ~ .x[["profile"]]))
@@ -594,5 +607,4 @@ print.evmodel <- function(x, ...) {
     )
   }
 }
-
 

@@ -31,10 +31,10 @@ test_that("The outliers are removed by cutting", {
 
 # kNN plot
 test_that("kNN plots", {
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_kNNdist(sessions, log = FALSE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_kNNdist(sessions, log = TRUE)
   ))
 })
@@ -59,10 +59,10 @@ test_that("Outliers plots", {
   sessions_outliers <- sessions %>%
     head(1000) %>%
     detect_outliers(noise_th = 1, log = TRUE, MinPts = 200, eps = 0.66)
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_outliers(sessions_outliers, log = TRUE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_outliers(sessions_outliers, log = FALSE)
   ))
 })
@@ -78,7 +78,7 @@ test_that("The outliers are removed by filtering", {
 
 # Disconnection day division lines
 test_that("Disconnection day division lines plot", {
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     sessions %>%
       head(1000) %>%
       plot_points() %>%

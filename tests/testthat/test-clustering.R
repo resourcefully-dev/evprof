@@ -56,7 +56,7 @@ test_that("Clusers are plotted correctly", {3
     cluster_sessions(k = 2, seed = 123, log = TRUE)
   plot_clusters <- plot_bivarGMM(sessions_clusters$sessions, sessions_clusters$models, log = FALSE)
   plot_clusters_log <- plot_bivarGMM(sessions_clusters$sessions, sessions_clusters$models, log = TRUE)
-  expect_true(ggplot2::is.ggplot(plot_clusters))
-  expect_true(ggplot2::is.ggplot(plot_clusters_log))
+  expect_true(ggplot2::is_ggplot(plot_clusters))
+  expect_true(ggplot2::is_ggplot(plot_clusters_log))
 })
 

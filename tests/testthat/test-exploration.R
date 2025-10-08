@@ -25,37 +25,37 @@ test_that("Statistic summary of sessions' features", {
 })
 
 test_that("Statistic plot of sessions' features", {
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_histogram_grid(sessions, vars = c("Power", "Energy", "ConnectionHours"))
   ))
 })
 
 test_that("Points plot", {
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_points(sessions, log = FALSE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_points(sessions, log = TRUE)
   ))
 })
 
 test_that("Density 2D plots", {
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "wday", log = FALSE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "month", log = FALSE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "year", log = FALSE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "wday", log = TRUE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "month", log = TRUE)
   ))
-  expect_true(ggplot2::is.ggplot(
+  expect_true(ggplot2::is_ggplot(
     plot_density_2D(sessions, by = "year", log = TRUE)
   ))
 })
