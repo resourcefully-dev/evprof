@@ -229,10 +229,11 @@ get_energy_models <- function(
 #'
 #' @importFrom purrr map set_names
 #' @importFrom cowplot plot_grid get_legend
-#' @importFrom ggplot2 ggplot aes geom_histogram geom_line theme_light labs theme unit after_stat
+#' @importFrom ggplot2 ggplot aes geom_histogram geom_line theme_light labs theme unit after_stat scale_color_manual
 #' @importFrom dplyr tibble mutate %>%
 #' @importFrom mclust predict.densityMclust
-#' @importFrom grDevices extendrange
+#' @importFrom grDevices extendrange hcl
+#' @importFrom stats setNames
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -252,6 +253,13 @@ plot_energy_models <- function(energy_models, nrow = 2) {
 
   plot_list <- list()
   legend_plot <- NULL
+  rate_levels <- sort(unique(unlist(purrr::map(energy_models$energy_models, "charging_rate"))))
+  rate_levels_chr <- as.character(rate_levels)
+  palette <- grDevices::hcl(
+    h = seq(15, 375, length.out = length(rate_levels_chr) + 1),
+    l = 65, c = 100
+  )[seq_along(rate_levels_chr)]
+  palette <- stats::setNames(palette, nm = rate_levels_chr)
 
   for (prof in unique(energy_models$profile)) {
 
@@ -282,12 +290,17 @@ plot_energy_models <- function(energy_models, nrow = 2) {
       .id = "charging_rate"
       )
 
+    lines_data[["charging_rate"]] <- factor(lines_data[["charging_rate"]],
+                                            levels = rate_levels_chr,
+                                            ordered = TRUE)
+
     profile_plot2 <- profile_plot +
       geom_line(
         data = lines_data,
         aes(x = .data[["x"]], y = .data[["y"]], color = .data[["charging_rate"]]),
         linewidth = 1
       ) +
+      scale_color_manual(values = palette, drop = FALSE) +
       labs(color = "Charging rate (kW)") +
       theme(
         legend.position = "bottom",
@@ -607,4 +620,3 @@ print.evmodel <- function(x, ...) {
     )
   }
 }
-

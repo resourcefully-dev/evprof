@@ -7,9 +7,9 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/evprof)](https://cran.r-project.org/package=evprof)
-[![R-CMD-check](https://github.com/mcanigueral/evprof/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mcanigueral/evprof/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/resourcefully-dev/evprof/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/resourcefully-dev/evprof/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/mcanigueral/evprof/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mcanigueral/evprof?branch=master)
+coverage](https://codecov.io/gh/resourcefully-dev/evprof/branch/master/graph/badge.svg)](https://app.codecov.io/gh/resourcefully-dev/evprof?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -94,7 +94,7 @@ pak::pak("resourcefully-dev/evprof")
 
 If you encounter a clear bug, please open an issue with a minimal
 reproducible example on
-[GitHub](https://github.com/mcanigueral/evprof/issues).
+[GitHub](https://github.com/resourcefully-dev/evprof/issues).
 
 For further technical details, you can read the following academic
 articles about the methodology used in this paper:

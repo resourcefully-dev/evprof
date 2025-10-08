@@ -1,5 +1,5 @@
-pandoc: '3.2'
-pkgdown: 2.1.1
+pandoc: '3.8'
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   california: california.html
@@ -7,7 +7,7 @@ articles:
   evprof: evprof.html
   outliers: outliers.html
   sessions-format: sessions-format.html
-last_built: 2025-04-01T09:37Z
+last_built: 2025-10-08T11:43Z
 urls:
   reference: https://resourcefully-dev.github.io/evprof/reference
   article: https://resourcefully-dev.github.io/evprof/articles
