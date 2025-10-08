@@ -1,3 +1,13 @@
+# evprof 1.2.0
+
+* Round noise of `get_dbscan_params()` to no decimals.
+* Change number of iterations in `save_clustering_iterations()` from 12 to 6
+* Fix wrong x-axis label in `plot_density_2D()`
+* Global option `evprof.log` to avoid configuring all functions
+* Function `plot_model_clusters()` renamed to `plot_connection_models()`
+* Single shared legend for `plot_energy_models()`
+
+
 # evprof 1.1.2
 
 * Patch in function `convert_time_dt_to_plot_dt` that was causing errors in some OS

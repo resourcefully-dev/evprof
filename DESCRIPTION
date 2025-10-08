@@ -1,6 +1,6 @@
 Package: evprof
 Title: Electric Vehicle Charging Sessions Profiling and Modelling
-Version: 1.1.2
+Version: 1.2.0
 Authors@R: 
     person(given = "Marc", family = "Cañigueral", role = c("aut", "cre", "cph"),
            email = "marccanyigueral@gmail.com",
