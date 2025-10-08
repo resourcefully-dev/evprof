@@ -59,7 +59,7 @@ reference:
 - subtitle: Connection Models
 - contents:
   - get_connection_models
-  - plot_model_clusters
+  - plot_connection_models
 - subtitle: Energy Models
 - contents:
   - get_energy_models
