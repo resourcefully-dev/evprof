@@ -1,0 +1,257 @@
+# evprof
+
+## Overview
+
+evprof is part of a suite of packages to analyse, model and simulate the
+charging behavior of electric vehicle users:
+
+- [evprof](https://resourcefully-dev.github.io/evprof/): Electric
+  Vehicle PROFiling
+- [evsim](https://resourcefully-dev.github.io/evsim/): Electric Vehicle
+  SIMulation
+
+evprof aims to provide tools for classifying EV charging sessions into
+generic groups with similar connection patterns named “user profiles”,
+using the Gaussian Mixture Models (GMM) clustering method. Moreover,
+functions to build stochastic models (based on GMM) for every user
+profile are also provided in order to simulate new EV sessions.
+
+The Gaussian Mixture Models clustering technique used in this package
+aims to accomplish two different tasks that can be useful for multiple
+purposes:
+
+1.  Classification of EV charging sessions into generic user profiles
+    (e.g. working time, dinner, commuters, etc.), allowing to:
+
+- Increase the knowledge on the different flexibility potential patterns
+  from a real data set
+- Define accurate tariffs according to the flexibility potential
+  (implicit demand response scenario)
+- Reduce the uncertainty of flexibility offers when participating in
+  flexibility markets (explicit demand response scenario)
+
+2.  Modeling every user profile with stochastic models, allowing to:
+
+- Simulate high penetration of EV to estimate when an existing charging
+  infrastructure will be saturated
+- Simulate different scenarios of charging rates to analyse the impact
+  of fast charging
+- Size and plan a public charging infrastructure
+
+## Usage
+
+To use this package you will need a data set of EV charging sessions
+with at least two fundamental variables: **connection start** time and
+**connection duration**. With these two variables you will be able to
+classify the sessions into different user profiles, but to generate the
+EV Gaussian Models you will also need the **energy** values.
+
+The package also provides an example open data set of EV charging
+sessions from the California Technological Institute (Caltech), which
+can be downloaded from the [ACN-Data
+website](https://ev.caltech.edu/dataset). For more information about
+this data set and how to use it, visit the [ACN
+documentation](https://acnportal.readthedocs.io/en/latest/). Moreover,
+an example `evmodel` object (EV Gaussian Mixture Models) built with
+`evprof` functions and the California open data set (see the [California
+case
+study](https://resourcefully-dev.github.io/evprof/articles/california.html)
+article) is also provided. These two demo data objects are provided
+together with package functions for a better interactive user
+experience.
+
+If you have your own data set, the best place to start is the [Get
+started
+chapter](https://resourcefully-dev.github.io/evprof/articles/evprof.html)
+in the package website.
+
+## Installation
+
+You can install the package from CRAN or the latest development version
+from GitHub:
+
+``` r
+
+# CRAN stable release
+install.packages("evprof")
+
+# install.packages("pak")
+pak::pak("resourcefully-dev/evprof")
+```
+
+## Getting help
+
+If you encounter a clear bug, please open an issue with a minimal
+reproducible example on
+[GitHub](https://github.com/resourcefully-dev/evprof/issues).
+
+For further technical details, you can read the following academic
+articles about the methodology used in this paper:
+
+- **Increasing hosting capacity of low-voltage distribution network
+  using smart charging based on local and dynamic capacity limits**.
+  Sustainable Energy, Grids and Networks, vol. 41. Elsevier BV,
+  p. 101626, March 2025. [DOI
+  link](https://doi.org/10.1016/j.segan.2025.101626).
+- **Assessment of electric vehicle charging hub based on stochastic
+  models of user profiles**. Expert Systems with Applications (Vol. 227,
+  p. 120318). Elsevier BV. May 2023. [DOI
+  link](https://doi.org/10.1016/j.eswa.2023.120318).
+- **Potential benefits of scheduling electric vehicle sessions over
+  limiting charging power**. CIRED Porto Workshop 2022: E-mobility and
+  power distribution systems. Institution of Engineering and
+  Technology, 2022. [DOI
+  link](https://ieeexplore.ieee.org/abstract/document/9841653).
+- **Flexibility management of electric vehicles based on user profiles:
+  The Arnhem case study**. International Journal of Electrical Power and
+  Energy Systems, vol. 133. Elsevier BV, p. 107195, Dec. 2021. [DOI
+  link](https://doi.org/10.1016/j.ijepes.2021.107195).
+- **Electric vehicle user profiles for aggregated flexibility
+  planning**. IEEE PES Innovative Smart Grid Technologies Europe (ISGT
+  Europe). IEEE, Oct. 18, 2021. [DOI
+  link](https://doi.org/10.1109/isgteurope52324.2021.9639931).
+
+## Acknowledgements
+
+This work started under a PhD program in the the University of Girona in
+collaboration with [Resourcefully](https://resourcefully.nl/), the
+energy transition consulting company that currently supports the
+development and maintenance.
+
+# Package index
+
+## Data exploratory analysis
+
+### Plots
+
+- [`plot_points()`](https://resourcefully-dev.github.io/evprof/reference/plot_points.md)
+  : Scatter plot of sessions
+- [`plot_density_2D()`](https://resourcefully-dev.github.io/evprof/reference/plot_density_2D.md)
+  : Density plot in 2D, considering Start time and Connection duration
+  as variables
+- [`plot_density_3D()`](https://resourcefully-dev.github.io/evprof/reference/plot_density_3D.md)
+  : Density plot in 3D, considering Start time and Connection duration
+  as variables
+- [`plot_histogram()`](https://resourcefully-dev.github.io/evprof/reference/plot_histogram.md)
+  : Histogram of a variable from sessions data set
+- [`plot_histogram_grid()`](https://resourcefully-dev.github.io/evprof/reference/plot_histogram_grid.md)
+  : Grid of multiple variable histograms
+
+### Sessions data set analysis
+
+- [`summarise_sessions()`](https://resourcefully-dev.github.io/evprof/reference/summarise_sessions.md)
+  : Statistic summary of sessions features
+- [`get_charging_rates_distribution()`](https://resourcefully-dev.github.io/evprof/reference/get_charging_rates_distribution.md)
+  : Get charging rates distribution in percentages
+- [`get_daily_n_sessions()`](https://resourcefully-dev.github.io/evprof/reference/get_daily_n_sessions.md)
+  : Get daily number of sessions given a range of years, months and
+  weekdays
+- [`get_daily_avg_n_sessions()`](https://resourcefully-dev.github.io/evprof/reference/get_daily_avg_n_sessions.md)
+  : Get the daily average number of sessions given a range of years,
+  months and weekdays
+- [`round_to_interval()`](https://resourcefully-dev.github.io/evprof/reference/round_to_interval.md)
+  : Round to nearest interval
+
+## Preprocessing
+
+### DBSCAN outliers cleaning
+
+- [`cut_sessions()`](https://resourcefully-dev.github.io/evprof/reference/cut_sessions.md)
+  : Cut outliers based on minimum and maximum limits of ConnectionHours
+  and ConnectionStartDateTime variables
+- [`plot_kNNdist()`](https://resourcefully-dev.github.io/evprof/reference/plot_kNNdist.md)
+  : Plot kNNdist
+- [`get_dbscan_params()`](https://resourcefully-dev.github.io/evprof/reference/get_dbscan_params.md)
+  : Get the minPts and eps values for DBSCAN to label only a specific
+  percentage as noise
+- [`plot_outliers()`](https://resourcefully-dev.github.io/evprof/reference/plot_outliers.md)
+  : Plot outlying sessions
+- [`detect_outliers()`](https://resourcefully-dev.github.io/evprof/reference/detect_outliers.md)
+  : Detect outliers
+- [`drop_outliers()`](https://resourcefully-dev.github.io/evprof/reference/drop_outliers.md)
+  : Drop outliers
+
+### Sessions division
+
+- [`plot_division_lines()`](https://resourcefully-dev.github.io/evprof/reference/plot_division_lines.md)
+  : Iteration over evprof::plot_division_line function to plot multiple
+  lines
+- [`divide_by_disconnection()`](https://resourcefully-dev.github.io/evprof/reference/divide_by_disconnection.md)
+  : Divide sessions by disconnection day
+- [`divide_by_timecycle()`](https://resourcefully-dev.github.io/evprof/reference/divide_by_timecycle.md)
+  : Divide sessions by time-cycle
+
+## Clustering
+
+- [`choose_k_GMM()`](https://resourcefully-dev.github.io/evprof/reference/choose_k_GMM.md)
+  : Visualize BIC indicator to choose the number of clusters
+
+- [`cluster_sessions()`](https://resourcefully-dev.github.io/evprof/reference/cluster_sessions.md)
+  :
+
+  Cluster sessions with `mclust` package
+
+- [`save_clustering_iterations()`](https://resourcefully-dev.github.io/evprof/reference/save_clustering_iterations.md)
+  : Save iteration plots in PDF file
+
+- [`plot_bivarGMM()`](https://resourcefully-dev.github.io/evprof/reference/plot_bivarGMM.md)
+  : Plot Bivariate Gaussian Mixture Models
+
+## Profiling
+
+- [`define_clusters()`](https://resourcefully-dev.github.io/evprof/reference/define_clusters.md)
+  : Define each cluster with a user profile interpretation
+- [`set_profiles()`](https://resourcefully-dev.github.io/evprof/reference/set_profiles.md)
+  : Classify sessions into user profiles
+
+## Modeling
+
+### Connection Models
+
+- [`get_connection_models()`](https://resourcefully-dev.github.io/evprof/reference/get_connection_models.md)
+  : Get a tibble of connection GMM for every user profile
+- [`plot_connection_models()`](https://resourcefully-dev.github.io/evprof/reference/plot_connection_models.md)
+  : Plot all bi-variable GMM (clusters) with the colors corresponding to
+  the assigned user profile. This shows which clusters correspond to
+  which user profile, and the proportion of every user profile.
+
+### Energy Models
+
+- [`get_energy_models()`](https://resourcefully-dev.github.io/evprof/reference/get_energy_models.md)
+  : Get a tibble of energy GMM for every user profile
+- [`plot_energy_models()`](https://resourcefully-dev.github.io/evprof/reference/plot_energy_models.md)
+  : Compare density of estimated energy with density of real energy
+  vector
+
+### EV model object
+
+- [`get_ev_model()`](https://resourcefully-dev.github.io/evprof/reference/get_ev_model.md)
+  :
+
+  Get the EV model object of class `evmodel`
+
+- [`save_ev_model()`](https://resourcefully-dev.github.io/evprof/reference/save_ev_model.md)
+  :
+
+  Save the EV model object of class `evmodel` to a JSON file
+
+- [`read_ev_model()`](https://resourcefully-dev.github.io/evprof/reference/read_ev_model.md)
+  :
+
+  Read an EV model JSON file and convert it to object of class `evmodel`
+
+# Articles
+
+### Developer
+
+- [Standard data
+  format](https://resourcefully-dev.github.io/evprof/articles/sessions-format.md):
+- [Outliers
+  detection](https://resourcefully-dev.github.io/evprof/articles/outliers.md):
+- [EV model
+  object](https://resourcefully-dev.github.io/evprof/articles/evmodel.md):
+
+### Study cases
+
+- [California case
+  study](https://resourcefully-dev.github.io/evprof/articles/california.md):

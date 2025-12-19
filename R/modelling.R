@@ -620,3 +620,32 @@ print.evmodel <- function(x, ...) {
     )
   }
 }
+
+
+adapt_old_evmodel <- function(evmodel) {
+  models <- evmodel$models
+  for (tc in seq_len(nrow(models))) {
+    # Remove mclust component
+    tc_models <- models$user_profiles[[tc]]
+    tc_models <- dplyr::select(tc_models, - dplyr::any_of("mclust"))
+
+    # Adapt energy models by charging rate
+    for (p in seq_len(nrow(tc_models))) {
+      e_models <- tc_models$energy_models[[p]]
+      e_models2 <- dplyr::tibble(
+        charging_rate = "Unknown",
+        ratio = 1,
+        energy_models = list(e_models)
+      )
+      tc_models$energy_models[[p]] <- e_models2
+    }
+
+    models$user_profiles[[tc]] <- tc_models
+  }
+
+  evmodel$models <- models
+
+  return( evmodel )
+}
+
+

@@ -67,7 +67,7 @@
 
 
 
-<link href="evprof_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<link href="evprof_files/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="evprof_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="evprof_files/dygraphs-1.1.1/dygraph.css" rel="stylesheet">
 <script src="evprof_files/dygraphs-1.1.1/dygraph-combined.js"></script><script src="evprof_files/dygraphs-1.1.1/shapes.js"></script><script src="evprof_files/moment-2.8.4/moment.js"></script><script src="evprof_files/moment-timezone-0.2.5/moment-timezone-with-data.js"></script><script src="evprof_files/moment-fquarter-1.0.0/moment-fquarter.min.js"></script><script src="evprof_files/dygraphs-binding-1.1.1.6/dygraphs.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
@@ -300,7 +300,7 @@ hour data set, based on the two most relevant features to define a user
 profile: Connection Start Time and Connection Hours (duration).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_points.html">plot_points</a></span><span class="op">(</span><span class="va">sessions</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/exploration-points-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/exploration-points-1.png" class="r-plt" width="960"></p>
 <p>As you can see, the visible “clouds” of points are not plotted in
 their natural shape. They are cut because the x axis of the plot goes
 from 00:00 to 23:59 of a single day, while the connection patterns start
@@ -310,7 +310,7 @@ parameter to set up the hour from which the EV users start their
 connections.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_points.html">plot_points</a></span><span class="op">(</span><span class="va">sessions</span>, start <span class="op">=</span> <span class="fl">6</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/exploration-points-start-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/exploration-points-start-1.png" class="r-plt" width="960"></p>
 <p>This <code>start</code> parameter can be defined with a global option
 since most function have the default value as
 <code>start = getOption("evprof.start.hour")</code>. Since this
@@ -360,7 +360,7 @@ overview of the data set in this sense can be done with a distribution
 plot (histogram) of each one of these features:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_histogram_grid.html">plot_histogram_grid</a></span><span class="op">(</span><span class="va">sessions</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/histograms-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/histograms-1.png" class="r-plt" width="960"></p>
 <p>There is no feature that fits a Gaussian distribution, and some
 features like <code>ConnectionHours</code> have more than one peak in
 the distribution curve. This shows the existence and combination of
@@ -396,7 +396,7 @@ each line corresponding to a different day.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_points.html">plot_points</a></span><span class="op">(</span><span class="va">sessions</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/plot_division_lines.html">plot_division_lines</a></span><span class="op">(</span>n_lines <span class="op">=</span> <span class="fl">4</span>, division_hour <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/division%20lines-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/division%20lines-1.png" class="r-plt" width="960"></p>
 <p>After finding the proper hour to make the division, function
 <code><a href="../reference/divide_by_disconnection.html">divide_by_disconnection()</a></code> makes this division adding an
 extra column to the data set, <code>Disconnection</code>, with the
@@ -414,22 +414,22 @@ over these 5 disconnection days is:</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">108109</td>
-<td align="right">51.31</td>
+<td align="right">107805</td>
+<td align="right">51.16</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">96680</td>
-<td align="right">45.88</td>
+<td align="right">96980</td>
+<td align="right">46.03</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">4802</td>
+<td align="right">4805</td>
 <td align="right">2.28</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
-<td align="right">906</td>
+<td align="right">907</td>
 <td align="right">0.43</td>
 </tr>
 <tr class="odd">
@@ -452,10 +452,10 @@ lets to analyze the different density of sessions (i.e. users behavior)
 according to different weekday, month or year.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_density_2D.html">plot_density_2D</a></span><span class="op">(</span><span class="va">sessions_divisions</span>, by <span class="op">=</span> <span class="st">'wday'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/density%202D%20plot%20wday-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/density%202D%20plot%20wday-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_density_2D.html">plot_density_2D</a></span><span class="op">(</span><span class="va">sessions_divisions</span>, by <span class="op">=</span> <span class="st">'month'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/density%202D%20plot%20month-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/density%202D%20plot%20month-1.png" class="r-plt" width="960"></p>
 <p>While depending on the weekday the density of sessions is highly
 diverse, between months we can’t see a big difference. Moreover, we
 could see different distributions on Monday-Thursday, Friday, Saturday
@@ -553,7 +553,7 @@ of functions setting the <code>log</code> parameter to
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_points.html">plot_points</a></span><span class="op">(</span><span class="va">sessions_divided</span>, size <span class="op">=</span> <span class="fl">0.2</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Timecycle</span>, <span class="va">Disconnection</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">'free'</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/divisions%20density%20plot-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/divisions%20density%20plot-1.png" class="r-plt" width="960"></p>
 <p>In these plots we see that every group has several points that stand
 out from most of points. These outliers can be detected specifying a
 <strong>noise threshold</strong> (in percentage) in function
@@ -581,7 +581,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">100</span>, noise_th <span class="op">=</span> <span class="fl">2</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">swc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-4-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_workday_city</span> <span class="op">&lt;-</span> <span class="va">swc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -596,7 +596,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">200</span>, noise_th <span class="op">=</span> <span class="fl">2</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">swh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-7-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_workday_home</span> <span class="op">&lt;-</span> <span class="va">swh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -610,7 +610,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">50</span>, noise_th <span class="op">=</span> <span class="fl">2</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sfc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-10-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_friday_city</span> <span class="op">&lt;-</span> <span class="va">sfc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -625,7 +625,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">200</span>, noise_th <span class="op">=</span> <span class="fl">5</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sfh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-13-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_friday_home</span> <span class="op">&lt;-</span> <span class="va">sfh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -639,7 +639,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">200</span>, noise_th <span class="op">=</span> <span class="fl">5</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssac</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-16-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_saturday_city</span> <span class="op">&lt;-</span> <span class="va">ssac</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -654,7 +654,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">50</span>, noise_th <span class="op">=</span> <span class="fl">6</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssah</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-19-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_saturday_home</span> <span class="op">&lt;-</span> <span class="va">ssah</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -669,7 +669,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">50</span>, noise_th <span class="op">=</span> <span class="fl">6</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssuc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-22-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-22-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_sunday_city</span> <span class="op">&lt;-</span> <span class="va">ssuc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -685,7 +685,7 @@ resulting in 8 different clean sub sets ready to be clustered.</p>
 <span>  <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>MinPts <span class="op">=</span> <span class="fl">200</span>, noise_th <span class="op">=</span> <span class="fl">5</span>, log <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssuh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">T</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-25-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-25-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sessions_sunday_home</span> <span class="op">&lt;-</span> <span class="va">ssuh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/drop_outliers.html">drop_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -826,7 +826,7 @@ example:</p>
 <span>  <span class="op">)</span>, </span>
 <span>  log <span class="op">=</span> <span class="cn">T</span>, legend_nrow <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-28-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-28-1.png" class="r-plt" width="960"></p>
 <p>Using <code>purrr</code> iteration we can generate a list with a plot
 for each sub-set.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
@@ -882,7 +882,7 @@ user profile name assigned to each interpretation (e.g. “Commuter”).</p>
 <div class="section level4">
 <h4 id="workday-city">Workday city<a class="anchor" aria-label="anchor" href="#workday-city"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-30-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-30-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">workday_city_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -975,7 +975,7 @@ user profile name assigned to each interpretation (e.g. “Commuter”).</p>
 <div class="section level4">
 <h4 id="workday-home">Workday home<a class="anchor" aria-label="anchor" href="#workday-home"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-32-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-32-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">workday_home_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1075,7 +1075,7 @@ morning</td>
 <div class="section level4">
 <h4 id="friday-city">Friday city<a class="anchor" aria-label="anchor" href="#friday-city"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-34-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-34-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">friday_city_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1168,7 +1168,7 @@ morning</td>
 <div class="section level4">
 <h4 id="friday-home">Friday home<a class="anchor" aria-label="anchor" href="#friday-home"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-36-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-36-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">friday_home_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1281,7 +1281,7 @@ early next morning.</li>
 <div class="section level4">
 <h4 id="saturday-city">Saturday city<a class="anchor" aria-label="anchor" href="#saturday-city"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-38-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-38-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">saturday_city_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1371,7 +1371,7 @@ than short ones.</li>
 <div class="section level4">
 <h4 id="saturday-home">Saturday home<a class="anchor" aria-label="anchor" href="#saturday-home"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-40-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-40-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">saturday_home_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1480,7 +1480,7 @@ home, thus the afternoon sessions belong now to Home profile.</li>
 <div class="section level4">
 <h4 id="sunday-city">Sunday city<a class="anchor" aria-label="anchor" href="#sunday-city"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-42-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-42-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">sunday_city_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1571,7 +1571,7 @@ time-cycles (around 15%)</li>
 <div class="section level4">
 <h4 id="sunday-home">Sunday home<a class="anchor" aria-label="anchor" href="#sunday-home"></a>
 </h4>
-<p><img src="evprof_files/figure-html/unnamed-chunk-44-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-44-1.png" class="r-plt" width="960"></p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define clusters</span></span>
 <span><span class="va">sunday_home_clusters_profiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_clusters.html">define_clusters</a></span><span class="op">(</span></span>
@@ -1733,7 +1733,7 @@ between time-cycle.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">classification_profiles_plot</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/plot%20classification%20profiles-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/plot%20classification%20profiles-1.png" class="r-plt" width="960"></p>
 <p>Although the same user profiles names are used in all time-cycles, we
 can appreciate some differences that support our approach to make a
 model for each time-cycle independently:</p>
@@ -1887,7 +1887,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <span>  profiles_ratios <span class="op">=</span> <span class="va">workday_connection_models</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>, <span class="st">"ratio"</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-48-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-48-1.png" class="r-plt" width="960"></p>
 <p>Energy models: Uni-variate Gaussian Mixture Models</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Build the models</span></span>
@@ -1900,7 +1900,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the univariate GMM</span></span>
 <span><span class="va">workday_energy_models_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_energy_models.html">plot_energy_models</a></span><span class="op">(</span><span class="va">workday_energy_models</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-51-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-51-1.png" class="r-plt" width="960"></p>
 </div>
 <div class="section level3">
 <h3 id="fridays-models">Fridays models<a class="anchor" aria-label="anchor" href="#fridays-models"></a>
@@ -1928,7 +1928,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <span>  profiles_ratios <span class="op">=</span> <span class="va">friday_connection_models</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>, <span class="st">"ratio"</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-54-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-54-1.png" class="r-plt" width="960"></p>
 <p>Energy models: Uni-variate Gaussian Mixture Models</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Build the models</span></span>
@@ -1941,7 +1941,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the univariate GMM</span></span>
 <span><span class="va">friday_energy_models_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_energy_models.html">plot_energy_models</a></span><span class="op">(</span><span class="va">friday_energy_models</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-57-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-57-1.png" class="r-plt" width="960"></p>
 </div>
 <div class="section level3">
 <h3 id="saturdays-models">Saturdays models<a class="anchor" aria-label="anchor" href="#saturdays-models"></a>
@@ -1969,7 +1969,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <span>  profiles_ratios <span class="op">=</span> <span class="va">saturday_connection_models</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>, <span class="st">"ratio"</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-60-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-60-1.png" class="r-plt" width="960"></p>
 <p>Energy models: Uni-variate Gaussian Mixture Models</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Build the models</span></span>
@@ -1982,7 +1982,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the univariate GMM</span></span>
 <span><span class="va">saturday_energy_models_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_energy_models.html">plot_energy_models</a></span><span class="op">(</span><span class="va">saturday_energy_models</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-63-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-63-1.png" class="r-plt" width="960"></p>
 </div>
 <div class="section level3">
 <h3 id="sundays-models">Sundays models<a class="anchor" aria-label="anchor" href="#sundays-models"></a>
@@ -2010,7 +2010,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <span>  profiles_ratios <span class="op">=</span> <span class="va">sunday_connection_models</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>, <span class="st">"ratio"</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-66-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-66-1.png" class="r-plt" width="960"></p>
 <p>Energy models: Uni-variate Gaussian Mixture Models</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Build the models</span></span>
@@ -2023,7 +2023,7 @@ charging infrastructure: 3.7 kW, 7.4 kW and 11 kW.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the univariate GMM</span></span>
 <span><span class="va">sunday_energy_models_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_energy_models.html">plot_energy_models</a></span><span class="op">(</span><span class="va">sunday_energy_models</span><span class="op">)</span></span></code></pre></div>
-<p><img src="evprof_files/figure-html/unnamed-chunk-69-1.png" width="960"></p>
+<p><img src="evprof_files/figure-html/unnamed-chunk-69-1.png" class="r-plt" width="960"></p>
 </div>
 <div class="section level3">
 <h3 id="save-the-ev-model">Save the EV model<a class="anchor" aria-label="anchor" href="#save-the-ev-model"></a>
@@ -2081,7 +2081,7 @@ built the energy models in a logarithmic scale</li>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ev_model</span></span></code></pre></div>
-<pre><code><span><span class="co">## EV sessions model of class "evmodel", created on 2025-10-08 </span></span>
+<pre><code><span><span class="co">## EV sessions model of class "evmodel", created on 2025-12-19 </span></span>
 <span><span class="co">## Timezone of the model: Europe/Amsterdam </span></span>
 <span><span class="co">## The Gaussian Mixture Models of EV user profiles are built in:</span></span>
 <span><span class="co">##   - Connection Models: logarithmic scale</span></span>
@@ -2294,7 +2294,7 @@ in concordance with the real peaks.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
