@@ -4,10 +4,10 @@ Example of an charging sessions data set ready to use by `evprof`
 functions. It is the open source data set downloaded from the [ACN-Data
 website](https://ev.caltech.edu/dataset), transformed according to the
 standard names defined by `evprof` (see
-[this](https://mcanigueral.github.io/evprof/articles/sessions-format.html)
+[this](https://resourcefully-dev.github.io/evprof/articles/sessions-format.html)
 article). More information about the analysis of this data set in the
 evprof website:
-<https://mcanigueral.github.io/evprof/articles/california.html>
+<https://resourcefully-dev.github.io/evprof/articles/california.html>
 
 ## Usage
 

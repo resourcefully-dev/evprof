@@ -13,8 +13,8 @@ save_ev_model(evmodel, file)
 - evmodel:
 
   object of class `evmodel` (see this
-  [link](https://mcanigueral.github.io/evprof/articles/evmodel.html) for
-  more information)
+  [link](https://resourcefully-dev.github.io/evprof/articles/evmodel.html)
+  for more information)
 
 - file:
 

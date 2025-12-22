@@ -2,7 +2,7 @@
 
 Example of an charging sessions data set that has been clustered by
 `evprof` functions. (see [this
-article](https://mcanigueral.github.io/evprof/articles/california.html#sessions-classification-into-user-profiles)).
+article](https://resourcefully-dev.github.io/evprof/articles/california.html#sessions-classification-into-user-profiles)).
 
 ## Usage
 

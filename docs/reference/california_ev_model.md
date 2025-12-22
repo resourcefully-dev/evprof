@@ -5,7 +5,7 @@ purposes. It has been created using an Open source data set of EV
 charging sessions provided by
 [ACN](https://acnportal.readthedocs.io/en/latest/). More information
 about the development of the model in the evprof website:
-<https://mcanigueral.github.io/evprof/articles/california.html>
+<https://resourcefully-dev.github.io/evprof/articles/california.html>
 
 ## Usage
 
@@ -29,4 +29,4 @@ An `evmodel` object.
 
 ## Source
 
-<https://mcanigueral.github.io/evprof/articles/california.html>
+<https://resourcefully-dev.github.io/evprof/articles/california.html>

@@ -14,8 +14,8 @@ print(x, ...)
 - x:
 
   `evmodel` object (see this
-  [link](https://mcanigueral.github.io/evprof/articles/evmodel.html) for
-  more information)
+  [link](https://resourcefully-dev.github.io/evprof/articles/evmodel.html)
+  for more information)
 
 - ...:
 

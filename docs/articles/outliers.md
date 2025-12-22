@@ -199,17 +199,17 @@ plots_list[[15]]
     ## $x
     ## <quosure>
     ## expr: ^.data[["ConnectionStartDateTime"]]
-    ## env:  0x11732d8f8
+    ## env:  0x133e44b80
     ## 
     ## $y
     ## <quosure>
     ## expr: ^.data[["ConnectionHours"]]
-    ## env:  0x11732d8f8
+    ## env:  0x133e44b80
     ## 
     ## $colour
     ## <quosure>
     ## expr: ^.data[["Outlier"]]
-    ## env:  0x11732d8f8
+    ## env:  0x133e44b80
     ## 
     ## attr(,"class")
     ## [1] "uneval"
@@ -1560,7 +1560,7 @@ plots_list[[15]]
     ##     super:  <ggproto object: Class FacetNull, Facet, gg>
     ## 
     ## $plot_env
-    ## <environment: 0x11732d8f8>
+    ## <environment: 0x133e44b80>
     ## 
     ## $layout
     ## <ggproto object: Class Layout, gg>

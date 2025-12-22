@@ -21,7 +21,7 @@ get_energy_models(
 - sessions_profiles:
 
   tibble, sessions data set in evprof [standard
-  format](https://mcanigueral.github.io/evprof/articles/sessions-format.html)
+  format](https://resourcefully-dev.github.io/evprof/articles/sessions-format.html)
   with user profile attribute `Profile`
 
 - log:

@@ -8,7 +8,7 @@
 }
 \arguments{
 \item{x}{\code{evmodel} object
-(see this \href{https://mcanigueral.github.io/evprof/articles/evmodel.html}{link} for more information)}
+(see this \href{https://resourcefully-dev.github.io/evprof/articles/evmodel.html}{link} for more information)}
 
 \item{...}{further arguments passed to or from other methods.}
 }

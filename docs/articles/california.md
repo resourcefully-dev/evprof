@@ -521,7 +521,7 @@ ev_model <- get_ev_model(
 ev_model
 ```
 
-    ## EV sessions model of class "evmodel", created on 2025-12-19 
+    ## EV sessions model of class "evmodel", created on 2025-12-22 
     ## Timezone of the model: America/Los_Angeles 
     ## The Gaussian Mixture Models of EV user profiles are built in:
     ##   - Connection Models: logarithmic scale
